@@ -128,13 +128,17 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private List<Uri> assetsToUri() {
-    final List<Uri> uris = new ArrayList<>();
+//    final List<Uri> uris = new ArrayList<>();
     final List<File> files = assetsToFiles();
-
-    for (int i = 0; i < range; i++) {
-      Uri uri = Uri.fromFile(files.get(i));
-      uris.add(uri);
-    }
+//
+//    for (int i = 0; i < range; i++) {
+//      Uri uri = Uri.fromFile(files.get(i));
+//      uris.add(uri);
+//    }
+    final List<Uri> uris = new ArrayList<>();
+    uris.add(Uri.parse("content://media/external/images/media/144289"));
+    uris.add(Uri.parse("content://media/external/images/media/144289"));
+    uris.add(Uri.parse("content://media/external/images/media/144289"));
 
     return uris;
   }
@@ -220,6 +224,7 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private void showResult(List<File> photos, File file) {
+    Log.d("lym","file:"+file.getAbsolutePath());
     int[] originSize = computeSize(photos.get(mAdapter.getItemCount()));
     int[] thumbSize = computeSize(file);
     String originArg = String.format(Locale.CHINA, "原图参数：%d*%d, %dk", originSize[0], originSize[1], photos.get(mAdapter.getItemCount()).length() >> 10);

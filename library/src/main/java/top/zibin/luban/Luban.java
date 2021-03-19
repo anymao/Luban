@@ -290,17 +290,7 @@ public class Luban implements Handler.Callback {
     }
 
     public Builder load(final Uri uri) {
-      mStreamProviders.add(new InputStreamAdapter() {
-        @Override
-        public InputStream openInternal() throws IOException {
-          return context.getContentResolver().openInputStream(uri);
-        }
-
-        @Override
-        public String getPath() {
-          return uri.getPath();
-        }
-      });
+      mStreamProviders.add(new UriInputStreamProvider(context,uri,mTargetDir));
       return this;
     }
 
